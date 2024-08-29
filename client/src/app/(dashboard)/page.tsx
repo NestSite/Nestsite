@@ -27,17 +27,17 @@ export default function DashboardPage() {
     {
       icon: <Icons.calendar />,
       title: totalBookings !== null ? totalBookings.toString() : null,
-      subtitle: "Total Bookings",
+      subtitle: "Total Visits",
     },
     {
       icon: <Icons.calendar />,
       title: totalMerchants !== null ? totalMerchants.toString() : null,
-      subtitle: "Total Merchants",
+      subtitle: "Total Users",
     },
     {
       icon: <Icons.calendar />,
       title: totalCommunities !== null ? totalCommunities.toString() : null,
-      subtitle: "Total Communities",
+      subtitle: "Total Sales",
     },
   ];
 

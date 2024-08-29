@@ -22,7 +22,7 @@ interface SignUpFormProps extends HTMLAttributes<HTMLDivElement> {}
 
 const formSchema = z
 	.object({
-		name: z.string().min(1, { message: "Please enter your name" }),
+		username: z.string().min(1, { message: "Please enter your username" }),
 		email: z
 			.string()
 			.min(1, { message: "Please enter your email" })
@@ -68,12 +68,12 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
 					<div className="grid gap-2">
 						<FormField
 							control={form.control}
-							name="name"
+							name="username"
 							render={({ field }) => (
 								<FormItem className="space-y-1">
-									<FormLabel>Name</FormLabel>
+									<FormLabel>Username</FormLabel>
 									<FormControl>
-										<Input placeholder="name" {...field} />
+										<Input placeholder="username" {...field} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>

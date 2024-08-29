@@ -1,8 +1,9 @@
 "use client";
 import { Card } from "@/components/ui/card";
-import { RecoverPasswordForm } from "./components/recover-password-form";
+import { SignUpForm } from "./components/sign-up-form";
 import Link from "next/link";
-export default function RecoverPassword() {
+
+export default function SignUp() {
 	return (
 		<>
 
@@ -10,16 +11,16 @@ export default function RecoverPassword() {
 					
 					<Card className="p-6 border-none rounded-xl">
 						<div className="flex font-semibold flex-col text-left mb-6">
-						<h1 className="text-md tracking-tight mb-3 text-gray-700">
-								Remember your password? &nbsp;
+                        <h1 className="text-md tracking-tight mb-3 text-gray-700">
+								Have an account? &nbsp;
 								<Link href="/login" className="text-md font-medium text-primary">
                                     login
                                 </Link>
 							</h1>
-							<h2 className="text-3xl -mt-4 text-gray-700">Password recovery</h2>
+							<h2 className="text-3xl -mt-4 text-gray-700">Create account</h2>
 							
 						</div>
-						<RecoverPasswordForm />
+						<SignUpForm />
 					</Card>
 				</div>
 

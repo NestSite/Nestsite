@@ -1,6 +1,6 @@
 import Image, { ImageProps } from "next/image";
 import logo from "@/assets/logo.png";
-import logoWord from "@/assets/logo-word.svg";
+import logoWord from "@/assets/Frame 49.png";
 import { GLOBAL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 

@@ -1,27 +1,30 @@
 export const GLOBAL = {
-     APP_NAME: "WaveServe",
-     APP_TITLE: "WaveServe Admin Dashboard",
-     APP_LOGIN_TITLE: "Login to WaveServe",
-     LOGIN_TEXT: "Login to your account",
-     AUTH_SUBTEXT: "Our Mission today and tomorrow is to support Seekers in getting more of their TO-DO-LIST completed by nearby lovely Taskers who need income to keep grinding in the face of tough economies. ",
+     APP_NAME: "Nestsite",
+     APP_TITLE: "Nestsite Dashboard",
+     APP_LOGIN_TITLE: "Login",
+     LOGIN_TEXT: "Welcome, enter your details to login to your nestsite account.",
+     APP_SIGN_UP_TITLE: "Get started",
+     SIGN_UP_TEXT: "Welcome to Nestsite! Let's get started by creating your account.",
+     AUTH_SUBTEXT: "Create, share and build your stellar world",
      AUTH_GREETING: "Have a great day doing this with us!     ",
      RECOVER_PASSWORD_TEXT: "Recover your Password",
-     APP_DESC: "Your WaveServe Admin Dashboard",
-     API_V1_URL: "https://waveserveapp.onrender.com/api/v1"
+     APP_DESC: "Your Nestsite Dashboard",
+     API_V1_URL: "https://nestsite.onrender.com/api/v1"
 }
 
 export const ROUTE = {
      HOME: "/",
      DASHBOARD: "/",
      PROFILE: "/profile",
-     BOOKINGS: "/bookings",
-     TASKERS: "/taskers/",
-     SEEKERS: "/seekers",
-     COMMUNITIES: "/communities",
      ANALYTICS: "/analytics",
      WITHDRAWALS: "/withdrawals",
      REVIEWS: "/reviews",
 
+     PORTFOLIO: {
+          INDEX: "/preview",
+          CUSTOMIZE: "/portfolio/customize",
+          
+     },
      //UPDATES
      UPDATES: "/updates",
      PUBLISH_NEW_POST: "/updates/new-post",
@@ -34,10 +37,6 @@ export const ROUTE = {
           VEHICLES: "/list-builders/vehicles",
           COUNTRIES: "/list-builders/countries",
      },
-     // PAGE BUILDERS
-     PAGES: "/pages",
-     ABOUT_US: "/pages/about-us",
-     FAQ: "/pages/faq",
      TERMS_OF_USE: "/pages/terms-of-use",
      PRIVACY_POLICY: "/pages/privacy-policy",
 
@@ -45,10 +44,7 @@ export const ROUTE = {
           LOGIN: "/",
           RECOVER_PASSWORD: "/recover-password/",
      },
-     PROFILE_MANAGER: "/profile-manager/",
-     SUBSCRIPTION_MANAGER: "/subscriptions",
-
-     VERIFICATION_REQUEST: "/verification-request",
+     
 }
 
 export const STATUS = {

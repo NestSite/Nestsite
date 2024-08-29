@@ -122,10 +122,10 @@ function NavLink({
 				onClick={handleLogout}
 				className={cn(
 					buttonVariants({
-						variant: "destructive",
+						variant: "ghost",
 						size: "sm",
 					}),
-					"h-12 justify-start text-wrap mx-4 rounded-md px-2",
+					"h-12 justify-start bg-black text-wrap mx-4 rounded-md px-2",
 					subLink && "h-10 w-full px-2 text-xs"
 				)}
 			>

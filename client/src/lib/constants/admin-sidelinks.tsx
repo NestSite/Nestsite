@@ -6,7 +6,16 @@ import {
 	IconDoorExit,
 	IconMoneybag,
 } from "@tabler/icons-react";
-import { MegaphoneIcon, PieChartIcon, SettingsIcon} from "lucide-react";
+import { 
+	MegaphoneIcon,
+	PodcastIcon,
+	BriefcaseBusinessIcon,
+	PieChartIcon, 
+	EuroIcon,
+	HandCoinsIcon,
+	StoreIcon,
+	SettingsIcon} from "lucide-react";
+
 import { ROUTE } from ".";
 
 export interface NavLink {
@@ -32,37 +41,8 @@ export const sidelinks: SideLink[] = [
 		href: ROUTE.DASHBOARD,
 		icon: <Icons.dashboard size={18} />,
 	},
-	{
-		title: "Bookings",
-		label: "",
-		href: ROUTE.BOOKINGS,
-		icon: <Icons.calendar size={18} />,
-	},
-	{
-		title: "Taskers",
-		label: "",
-		href: ROUTE.TASKERS,
-		icon: <Icons.gauge size={18} />,
-	},
-	{
-		title: "Seekers",
-		label: "",
-		href: ROUTE.SEEKERS,
-		icon: <Icons.tasklist size={18} />,
-	},
-	{
-		title: "Reviews",
-		label: "",
-		href: ROUTE.REVIEWS,
-		icon: <Icons.chat size={18} />,
-	},
-	{
-		title: "Communities",
-		label: "",
-		href: ROUTE.COMMUNITIES,
-		icon: <Icons.puzzle size={18} />,
-	},
 	
+
 	{
 		title: "Analytics",
 		label: "",
@@ -70,41 +50,99 @@ export const sidelinks: SideLink[] = [
 		icon: <PieChartIcon size={18} />,
 	},
 	{
+		title: "Portfolio",
+		label: "",
+		href: "",
+		icon: <BriefcaseBusinessIcon size={18} />,
+		sub: [
+		
+			{
+				title: "Preview",
+				label: "",
+				href: ROUTE.PORTFOLIO.INDEX,
+				icon: <IconUserShield size={18} />,
+			},
+			{
+				title: "customize",
+				label: "",
+				href: ROUTE.PORTFOLIO.CUSTOMIZE,
+				icon: <IconUserShield size={18} />,
+			},
+			
+
+		],
+	},
+	{
+		title: "Storefront",
+		label: "",
+		href: "",
+		icon: <StoreIcon size={18} />,
+		sub: [
+		
+			{
+				title: "Preview",
+				label: "",
+				href: ROUTE.PORTFOLIO.INDEX,
+				icon: <IconUserShield size={18} />,
+			},
+			{
+				title: "Customize",
+				label: "",
+				href: ROUTE.PORTFOLIO.INDEX,
+				icon: <IconUserShield size={18} />,
+			},
+			{
+				title: "products",
+				label: "",
+				href: ROUTE.PORTFOLIO.CUSTOMIZE,
+				icon: <IconUserShield size={18} />,
+			},
+		],
+	},
+	{
+		title: "Payment Link",
+		label: "",
+		href: ROUTE.WITHDRAWALS,
+		icon: <EuroIcon size={18} />,
+	},
+	{
 		title: "Withdrawals",
 		label: "",
 		href: ROUTE.WITHDRAWALS,
 		icon: <IconMoneybag size={18} />,
 	},
-	{
-		title: "Updates",
-		label: "",
-		href: ROUTE.UPDATES,
-		icon: <MegaphoneIcon size={18} />,
-	},
+	// {
+	// 	title: "Updates",
+	// 	label: "",
+	// 	href: ROUTE.UPDATES,
+	// 	icon: <MegaphoneIcon size={18} />,
+	// },
 	{
 		title: "Settings",
 		label: "",
 		href: "",
 		icon: <SettingsIcon size={18} />,
 		sub: [
+		
 			{
-				title: "Subscription Manager",
+				title: "Profile",
 				label: "",
-				href: ROUTE.SUBSCRIPTION_MANAGER,
+				href: ROUTE.PROFILE,
 				icon: <IconUserShield size={18} />,
 			},
 			{
-				title: "List Builder",
+				title: "Payout",
 				label: "",
-				href: ROUTE.LIST_BUILDERS.INDEX,
-				icon: <IconUserShield size={18} />,
+				href: ROUTE.PROFILE,
+				icon: <HandCoinsIcon size={18} />,
 			},
 			{
-				title: "Page Builder",
+				title: "Login & Security",
 				label: "",
-				href: ROUTE.PAGES,
+				href: ROUTE.PROFILE,
 				icon: <IconUserShield size={18} />,
 			},
+			
 
 		],
 	},
@@ -120,21 +158,14 @@ export const sidelinks: SideLink[] = [
 				href: "/users",
 				icon: <IconUserShield size={18} />,
 			},
-			{
-				title: "Role Manager",
-				label: "",
-				href: "/roles",
-				icon: <IconUserShield size={18} />,
-			},
-
-			{
-				title: "Verification Request",
-				label: "7",
-				href: ROUTE.VERIFICATION_REQUEST,
-				icon: <IconUserShield size={18} />,
-			},
-
+		
 		],
+	},
+	{
+		title: "Subscription",
+		label: "",
+		href: ROUTE.WITHDRAWALS,
+		icon: <PodcastIcon size={18} />,
 	},
 ];
 
@@ -149,7 +180,7 @@ export const bottomSidelinks: SideLink[] = [
 		title: "Log Out",
 		label: "",
 		href: "/logout",
-		variant: "destructive",
+		
 		icon: <IconDoorExit size={18} />,
 	},
 

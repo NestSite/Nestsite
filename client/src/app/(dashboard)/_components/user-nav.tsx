@@ -30,7 +30,7 @@ export function UserNav() {
 		
 		dispatch(clearAuthData());
 
-		deleteCookie('adminToken');
+		deleteCookie('nestsiteToken');
 
 
 		router.replace("/login");
