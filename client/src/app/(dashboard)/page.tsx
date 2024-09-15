@@ -17,7 +17,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function DashboardPage() {
   const dispatch = useDispatch<AppDispatch>();
-  const { totalBookings, totalMerchants, totalCommunities, loading } = useSelector((state: RootState) => state.totals);
+  const { totalPortfolios, totalProjects, totalProducts, totalStorefronts, totalPaymentLinks, loading } = useSelector((state: RootState) => state.totals);
 
   useEffect(() => {
     dispatch(fetchTotals());
@@ -26,18 +26,28 @@ export default function DashboardPage() {
   const overviewData = [
     {
       icon: <Icons.calendar />,
-      title: totalBookings !== null ? totalBookings.toString() : null,
-      subtitle: "Total Bookings",
+      title: totalPortfolios !== null ? totalPortfolios.toString() : null,
+      subtitle: "Total Portfolios",
+    },
+    {
+      icon: <Icons.calendar/>,
+      title: totalProjects !== null ? totalProjects.toString() : null,
+      subtitle: "Total Projects",
     },
     {
       icon: <Icons.calendar />,
-      title: totalMerchants !== null ? totalMerchants.toString() : null,
-      subtitle: "Total Merchants",
+      title: totalProducts !== null ? totalProducts.toString() : null,
+      subtitle: "Total Products",
     },
     {
       icon: <Icons.calendar />,
-      title: totalCommunities !== null ? totalCommunities.toString() : null,
-      subtitle: "Total Communities",
+      title: totalStorefronts !== null ? totalStorefronts.toString() : null,
+      subtitle: "Total Storefronts",
+    },
+    {
+      icon: <Icons.calendar />,
+      title: totalPaymentLinks !== null ? totalPaymentLinks.toString() : null,
+      subtitle: "Total Payment Links",
     },
   ];
 

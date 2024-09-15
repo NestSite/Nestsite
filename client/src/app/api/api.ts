@@ -10,7 +10,7 @@ export async function apiRequest(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
   data?: any
 ) {
-  const token = getCookie('adminToken', { req, res }) as string;
+  const token = getCookie('nestsiteAuthToken', { req, res }) as string;
 
   if (!token) {
     return { status: 401, message: 'Unauthorized' };

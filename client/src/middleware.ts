@@ -12,8 +12,8 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  if (pathname.startsWith('/login') || pathname.startsWith('/recover-password')) {
-    const tokenCookie = req.cookies.get('adminToken');
+  if (pathname.startsWith('/login') || pathname.startsWith('/sign-up') || pathname.startsWith('/recover-password') || pathname.startsWith('/reset-password')) {
+    const tokenCookie = req.cookies.get('nestsiteAuthToken');
     const token = tokenCookie ? tokenCookie.value : null;
 
     if (token) {
@@ -29,7 +29,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const tokenCookie = req.cookies.get('adminToken');
+  const tokenCookie = req.cookies.get('nestsiteAuthToken');
   const token = tokenCookie ? tokenCookie.value : null;
 
   if (!token) {

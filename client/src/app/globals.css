@@ -76,6 +76,20 @@
 }
 
   
+.bg-primary{
+  background: #7934F5;
+}
+
+.bg-secondary{
+  background: #510be6;
+}
+
+.text-primary{
+  color: #7934F5;
+}
+.text-secondary{
+  color: #510be6;
+}
 @layer utilities {
   .bg-grad-to-right {
     background-image: linear-gradient(to right, #25C3EE,#1495B8);

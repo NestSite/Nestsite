@@ -3,7 +3,7 @@ import { BACKEND_URL } from '@/lib/utils';
 
 export async function loginUser(email: string, password: string) {
   try {
-    const response = await axios.post(`${BACKEND_URL}/api/v1/auth/login/admin`, {
+    const response = await axios.post(`${BACKEND_URL}/api/v1/auth/login/`, {
       email,
       password
     }, {

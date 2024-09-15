@@ -38,7 +38,7 @@ export default function AnalyticsPage() {
 
       <div className="mt-6 leading-[140%] max-md:max-w-full grid md:grid-cols-3 gap-4">
         <Stat
-          title="Signup Trend"
+          title="Link Clicks"
           change="+2.50%"
           count={13000}
           subText="Active Users"
@@ -55,10 +55,10 @@ export default function AnalyticsPage() {
           }
         />
         <Stat
-          title="Total Communities"
+          title="Total Sales"
           change="+2.50%"
           count={13000}
-          subText="Active Communities"
+          subText="Active Orders"
           subTextChange="20%"
           color="red"
           rightElement={
@@ -112,27 +112,6 @@ export default function AnalyticsPage() {
           </Select>
         } />
 
-        <UsersByCountry className="md:col-span-5"
-          rightElement={
-            <Select>
-              <SelectTrigger className="flex w-full px-3 py-5 text-sm text-black border rounded-md border-input bg-background ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-                <SelectValue placeholder="Last 24 hours" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="24hrs">Last 24 hours</SelectItem>
-              </SelectContent>
-            </Select>
-          } />
-        <Bookings className="md:col-span-7" rightElement={
-          <Select>
-            <SelectTrigger className="flex w-full px-3 py-5 text-sm text-black border rounded-md border-input bg-background ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-              <SelectValue placeholder="Last 24 hours" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="24hrs">Last 24 hours</SelectItem>
-            </SelectContent>
-          </Select>
-        } />
         <TotalRevenue className="md:col-span-12"
           rightElement={
             <Select>

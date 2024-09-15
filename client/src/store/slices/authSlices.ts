@@ -1,38 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Biodata {
-    id: string;
-    firstName: string;
-    lastName: string;
-    gender: string;
-    dateOfBirth: string;
-    emailAddress: string;
-    phoneNumber: string;
-    country: string;
-    state: string;
-    city: string;
-    address: string;
-    postalCode: string;
-    merchantId: string;
-}
-
 interface Merchant {
     id: string;
     username: string | null;
+    firstName: string | null;
+    lastName: string | null;
     email: string;
     secondaryEmail: string | null;
+    profilePhoto: string | null;
     role: string;
-    status: string;
     emailVerified: boolean;
-    profilePhoto:string;
+    accountVerified: boolean;
     phoneNumber: string | null;
     address: string | null;
     countryRegion: string | null;
-    twoFactorEnabled: boolean;
+    instagramURL: string | null;
+    facebookURL: string | null;
+    tiktokURL: string | null;
+    twitterURL: string | null;
+    subscriptionPlanId: string | null;
     createdAt: string;
     updatedAt: string;
-    subscriptionPlanId: string | null;
-    biodata: Biodata;
 }
 
 interface AuthState {

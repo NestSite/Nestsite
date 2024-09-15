@@ -1,8 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { UserAuthForm } from "./components/user-auth-form";
-import { Icons } from "@/components/icons";
-
+import Link from "next/link";
 export default function SignIn() {
 	return (
 		<>
@@ -11,8 +10,13 @@ export default function SignIn() {
 					
 					<Card className="p-6 border-none rounded-xl">
 						<div className="flex font-semibold flex-col text-left mb-6">
-							<h1 className="text-lg tracking-tight mb-3 text-gray-700">Welcome to Waveserve</h1>
-							<h2 className="text-3xl -mt-4 text-gray-700">Access account</h2>
+							<h1 className="text-md tracking-tight mb-3 text-gray-700">
+								Do not have an account? &nbsp;
+								<Link href="/sign-up" className="text-md font-medium text-primary">
+                                    Sign up
+                                </Link>
+							</h1>
+							<h2 className="text-3xl -mt-4 text-gray-700">Welcome back👋</h2>
 							
 						</div>
 						<UserAuthForm />
