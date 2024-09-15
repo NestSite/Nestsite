@@ -1,0 +1,162 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Merchant entity
+model Merchant {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  username          String?
+  lastName          String?
+  firstName         String?
+  email             String   @unique
+  secondaryEmail    String?
+  password          String?
+  googleId          String?  @unique
+  profilePhoto      String?
+  role              String   @default("merchant")
+  emailVerified     Boolean  @default(false)
+  accountVerified   Boolean  @default(false)
+  phoneNumber       String?
+  address           String?
+  countryRegion     String?
+  instagramURL      String?
+  facebookURL       String?
+  tiktokURL         String?
+  twitterURL        String?
+  portfolios        Portfolio[]
+  storefronts       Storefront[]    // Relation with Storefront model
+  paymentLinks      PaymentLink[]   // Relation with PaymentLink model
+  twoFactorEnabled  Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  devices           Device[]
+  subscriptionPlanId String?  @db.ObjectId
+  subscriptionPlan   SubscriptionPlan? @relation(fields: [subscriptionPlanId], references: [id])
+}
+
+// Portfolio entity
+model Portfolio {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  merchantId      String    @db.ObjectId
+  merchant        Merchant  @relation(fields: [merchantId], references: [id])
+  fullName        String    // Full name of the user
+  skill           String    // Skill of the user
+  description     String?   // Description of the user
+  profilePhoto    String?   // Profile photo for the portfolio
+  projects        Project[] // Projects associated with the portfolio
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Project entity (Related to Portfolio)
+model Project {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  portfolioId  String   @db.ObjectId
+  portfolio    Portfolio @relation(fields: [portfolioId], references: [id])
+  name         String    // Project name
+  liveUrl      String?   // Live URL for the project
+  imageUrl     String?   // Image URL for the project
+  description  String?   // Project description
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// Storefront entity
+model Storefront {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  merchantId      String    @db.ObjectId
+  merchant        Merchant  @relation(fields: [merchantId], references: [id])
+  name            String    // Name of the storefront
+  imageUrl        String?   // Storefront image URL
+  description     String?   // Storefront description
+  categories      Category[] // Categories associated with the storefront
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Category entity (Related to Storefront)
+model Category {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  storefrontId String    @db.ObjectId
+  storefront   Storefront @relation(fields: [storefrontId], references: [id])
+  name         String     // Category name
+  products     Product[]  // Products associated with this category
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+// Product entity
+model Product {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  categoryId        String   @db.ObjectId
+  category          Category @relation(fields: [categoryId], references: [id])
+  name              String   // Product name
+  productImageUrl   String?  // URL for product image
+  price             String?   // Product price
+  description       String?  // Product description
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// PaymentLink entity
+model PaymentLink {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  merchantId      String   @db.ObjectId
+  merchant        Merchant @relation(fields: [merchantId], references: [id])
+  name            String?  // Payment link URL
+  description     String?  // Description for the payment link
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Device entity
+model Device {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier      String   @unique
+  merchantId      String   @db.ObjectId
+  merchant        Merchant @relation(fields: [merchantId], references: [id])
+}
+
+// SubscriptionPlan entity
+model SubscriptionPlan {
+  id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String    @unique
+  price                Float
+  maxStores            Int
+  maxProductsPerStore  Int
+  maxStoreThemes       Int
+  maxPortfolio         Int     // Add maximum number of portfolios
+  maxPortfolioTheme    Int     // Add maximum number of portfolio themes
+  noInventoryLocations Int     // Add maximum number of inventory locations
+  transactionFeePercent Float?
+  productCommission    Float?
+  allowsCustomDomain   Boolean
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  merchants            Merchant[]
+}
+
+// Newsletter entity
+model Newsletter {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+// Contact entity
+model Contact {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+  company   String?
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
