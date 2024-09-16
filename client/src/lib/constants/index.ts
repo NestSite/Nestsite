@@ -16,13 +16,23 @@ export const ROUTE = {
      HOME: "/",
      DASHBOARD: "/",
      PROFILE: "/profile",
+     SECURITY:"/security",
      ANALYTICS: "/analytics",
+     PAYOUT:"#",
      WITHDRAWALS: "/withdrawals",
      REVIEWS: "/reviews",
-
+     HASHED:'#',
      PORTFOLIO: {
-          INDEX: "/preview",
-          CUSTOMIZE: "/portfolio/customize",
+          INDEX: "/portfolio",
+          CUSTOMIZE: "/customize-portfolio",
+          PROJECTS:"/projects"
+          
+     },
+     STOREFRONT: {
+          INDEX: "/storefront",
+          CUSTOMIZE: "/storefront-portfolio",
+          PRODUCTS:"/products",
+          CATEGORY:'/category'
           
      },
      //UPDATES

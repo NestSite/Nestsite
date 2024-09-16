@@ -109,7 +109,7 @@ function NavLink({
 		
 		router.push("/login");
 		console.log('demo')
-		deleteCookie("adminToken");
+		deleteCookie("nestsiteAuthToken");
 
 		dispatch(clearAuthData());
 

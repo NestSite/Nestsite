@@ -62,10 +62,11 @@ export const sidelinks: SideLink[] = [
 				href: ROUTE.PORTFOLIO.INDEX,
 				icon: <IconUserShield size={18} />,
 			},
+			
 			{
-				title: "customize",
+				title: "projects",
 				label: "",
-				href: ROUTE.PORTFOLIO.CUSTOMIZE,
+				href: ROUTE.PORTFOLIO.PROJECTS,
 				icon: <IconUserShield size={18} />,
 			},
 			
@@ -82,19 +83,22 @@ export const sidelinks: SideLink[] = [
 			{
 				title: "Preview",
 				label: "",
-				href: ROUTE.PORTFOLIO.INDEX,
+				href: ROUTE.STOREFRONT.INDEX,
 				icon: <IconUserShield size={18} />,
 			},
+			
 			{
-				title: "Customize",
+				title: "Product-category",
 				label: "",
-				href: ROUTE.PORTFOLIO.INDEX,
+				href: ROUTE.STOREFRONT.CATEGORY,
 				icon: <IconUserShield size={18} />,
 			},
+			
+			
 			{
 				title: "products",
 				label: "",
-				href: ROUTE.PORTFOLIO.CUSTOMIZE,
+				href: ROUTE.STOREFRONT.PRODUCTS,
 				icon: <IconUserShield size={18} />,
 			},
 		],
@@ -105,12 +109,12 @@ export const sidelinks: SideLink[] = [
 		href: ROUTE.WITHDRAWALS,
 		icon: <EuroIcon size={18} />,
 	},
-	{
-		title: "Withdrawals",
-		label: "",
-		href: ROUTE.WITHDRAWALS,
-		icon: <IconMoneybag size={18} />,
-	},
+	// {
+	// 	title: "Withdrawals",
+	// 	label: "",
+	// 	href: ROUTE.WITHDRAWALS,
+	// 	icon: <IconMoneybag size={18} />,
+	// },
 	// {
 	// 	title: "Updates",
 	// 	label: "",
@@ -130,41 +134,41 @@ export const sidelinks: SideLink[] = [
 				href: ROUTE.PROFILE,
 				icon: <IconUserShield size={18} />,
 			},
-			{
-				title: "Payout",
-				label: "",
-				href: ROUTE.PROFILE,
-				icon: <HandCoinsIcon size={18} />,
-			},
+			// {
+			// 	title: "Payout",
+			// 	label: "",
+			// 	href: ROUTE.PAYOUT,
+			// 	icon: <HandCoinsIcon size={18} />,
+			// },
 			{
 				title: "Login & Security",
 				label: "",
-				href: ROUTE.PROFILE,
+				href: ROUTE.SECURITY,
 				icon: <IconUserShield size={18} />,
 			},
 			
 
 		],
 	},
-	{
-		title: "Users",
-		label: "",
-		href: "",
-		icon: <IconUsersGroup size={18} />,
-		sub: [
-			{
-				title: "All Users",
-				label: "",
-				href: "/users",
-				icon: <IconUserShield size={18} />,
-			},
+	// {
+	// 	title: "Users",
+	// 	label: "",
+	// 	href: "",
+	// 	icon: <IconUsersGroup size={18} />,
+	// 	sub: [
+	// 		{
+	// 			title: "All Users",
+	// 			label: "",
+	// 			href: "/users",
+	// 			icon: <IconUserShield size={18} />,
+	// 		},
 		
-		],
-	},
+	// 	],
+	// },
 	{
 		title: "Subscription",
 		label: "",
-		href: ROUTE.WITHDRAWALS,
+		href: ROUTE.HASHED,
 		icon: <PodcastIcon size={18} />,
 	},
 ];
@@ -173,7 +177,7 @@ export const bottomSidelinks: SideLink[] = [
 	{
 		title: "Support Tickets",
 		label: "",
-		href: "/",
+		href: ROUTE.HASHED,
 		icon: <IconHeadphones size={18} />,
 	},
 	{

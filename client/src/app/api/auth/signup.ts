@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { BACKEND_URL } from '@/lib/utils';
 
-export async function loginUser(email: string, password: string) {
+export async function signUpUser(username: string, email: string, password: string) {
   try {
-    const response = await axios.post(`${BACKEND_URL}/api/v1/auth/login/`, {
+    const response = await axios.post(`${BACKEND_URL}/api/v1/auth/register/`, {
+      username,
       email,
       password
     }, {
@@ -12,11 +13,11 @@ export async function loginUser(email: string, password: string) {
 
     return response.data;
   } catch (error: any) {
-    console.error('Error during login:', error);
+    console.error('Error during signup:', error);
     if (error.response && error.response.data && error.response.data.message) {
       return { message: error.response.data.message };
     }
 
-    return { message: error.response.data.error || 'An error occurred during login' };
+    return { message: error.response.data.error || 'An error occurred during signup' };
   }
 }

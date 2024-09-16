@@ -1,5 +1,3 @@
-"use client";
-
 import { HTMLAttributes, useState } from "react";
 import { z } from "zod";
 import {
@@ -18,12 +16,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { PasswordInput } from "@/components/ui/password-input";
-import { GLOBAL, ROUTE } from "@/lib/constants";
 import { loginUser } from "@/app/api/auth/login";
 import { setCookie } from "cookies-next";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { setAuthData } from "@/store/slices/authSlices";
+import { setProfileData } from "@/store/slices/profileSlice";
 import { 
     ToastProvider, 
     Toast, 
@@ -34,8 +32,14 @@ import {
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> {}
 
 const formSchema = z.object({
-    email: z.string().min(1, { message: "Please enter your email" }).email({ message: "Invalid email address" }),
-    password: z.string().min(1, { message: "Please enter your password" }).min(7, { message: "Password must be at least 7 characters long" }),
+    email: z
+        .string()
+        .min(1, { message: "Please enter your email" })
+        .email({ message: "Invalid email address" }),
+    password: z
+        .string()
+        .min(1, { message: "Please enter your password" })
+        .min(7, { message: "Password must be at least 7 characters long" }),
 });
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
@@ -46,7 +50,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     const router = useRouter();
     const dispatch = useDispatch<AppDispatch>();
-    
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -57,34 +61,52 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
         setIsLoading(true);
+        setToastOpen(false); // Close any existing toast messages
         try {
             const res = await loginUser(data.email, data.password);
             setIsLoading(false);
-            if (res?.token) {
-                // Save token in cookies
-                setCookie('adminToken', res?.token);
 
+            if (res && res.token) {
+                // Ensure the response has a token and merchant
+                if (!res.token || !res.merchant) {
+                    throw new Error("Invalid response from server");
+                }
+
+                // Save token in cookies
+                setCookie('nestsiteAuthToken', res.token, {
+                    path: '/', // Set cookie on the root path to make it accessible globally
+                    domain: window.location.hostname, // Ensure it's set for the current domain
+                    maxAge: 60 * 60 * 24, // 1 day expiry
+                    secure: process.env.NODE_ENV === 'production', // Only use secure in production
+                });
+
+                console.log(res.merchant)
                 dispatch(setAuthData({
                     token: res.token,
                     merchant: res.merchant,
                 }));
+                dispatch(setProfileData(res.merchant));
 
                 setToastMessage(res.message || "Login successful!");
                 setToastVariant("default");
                 setToastOpen(true);
+
+                // Navigate to the home page
                 router.push('/');
             } else {
-                setToastMessage(res.message || "Login failed. Please check your credentials.");
-                setToastVariant("destructive");
-                setToastOpen(true);
+                // Handle login failure (such as invalid credentials)
+                throw new Error(res.message || "Login failed. Please check your credentials.");
             }
         } catch (err: any) {
+            console.error("Login error:", err); // Log the error for debugging
+
+            // Set the error message in the toast
             setToastMessage(err.message || "Oops! Something went wrong");
             setToastVariant("destructive");
             setToastOpen(true);
             setIsLoading(false);
         } finally {
-            setIsLoading(false);
+            setIsLoading(false); // Ensure loading state is turned off
         }
     }
 
