@@ -9,6 +9,7 @@ import portfolioReducer from './slices/portfolioSlice'; // Import portfolio slic
 import projectReducer from './slices/projectSlice'; // Import project slice
 import paymentLinkReducer from './slices/paymentLinkSlice'; // Import payment link slice
 import categoryReducer from './slices/categorySlice';
+import neststoreReducer from './slices/neststoreSlice';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -19,7 +20,8 @@ export const store = configureStore({
     portfolio: portfolioReducer, // Add portfolio reducer
     project: projectReducer, // Add project reducer
     paymentLink: paymentLinkReducer, // Add payment link reducer
-    category:categoryReducer
+    category:categoryReducer,
+    neststore:neststoreReducer,
   },
 });
 

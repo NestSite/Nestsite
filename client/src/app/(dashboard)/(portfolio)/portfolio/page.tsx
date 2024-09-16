@@ -23,7 +23,7 @@ import {
   ToastViewport,
 } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
-
+import { DEPLOYED_URL } from "@/lib/utils";
 const PortfolioPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
@@ -50,7 +50,11 @@ const PortfolioPage = () => {
     <ToastProvider swipeDirection="right">
       <div className="container mx-auto py-8">
         <div className="flex justify-between items-center mb-4">
+          <div>
           <h1 className="text-2xl font-semibold">Your Portfolios</h1>
+          <br />
+          <span>visit {DEPLOYED_URL}/nestport/:portfolioName to preview</span>
+          </div>
           
           {/* Button to Create New Portfolio */}
           <Button onClick={() => setIsOpen(true)}>Create New Portfolio</Button>
