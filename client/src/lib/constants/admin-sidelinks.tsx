@@ -106,7 +106,7 @@ export const sidelinks: SideLink[] = [
 	{
 		title: "Payment Link",
 		label: "",
-		href: ROUTE.WITHDRAWALS,
+		href: ROUTE.PAYMENT,
 		icon: <EuroIcon size={18} />,
 	},
 	// {

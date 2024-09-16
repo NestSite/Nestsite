@@ -18,7 +18,7 @@ export const ROUTE = {
      PROFILE: "/profile",
      SECURITY:"/security",
      ANALYTICS: "/analytics",
-     PAYOUT:"#",
+     PAYMENT:"/payment-link",
      WITHDRAWALS: "/withdrawals",
      REVIEWS: "/reviews",
      HASHED:'#',
