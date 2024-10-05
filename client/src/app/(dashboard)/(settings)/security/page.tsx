@@ -1,21 +1,13 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
 import { PasswordInput } from '@/components/ui/password-input';
 import { Button } from '@/components/ui/button';
 import { updatePassword } from '@/app/api/auth/auth';
-
-import {
-  ToastProvider,
-  Toast,
-  ToastTitle,
-  ToastViewport,
-} from '@/components/ui/toast'; // Import toast components
+import { ToastProvider, Toast, ToastTitle, ToastViewport } from '@/components/ui/toast';
 
 // Define the validation schema using zod
 const formSchema = z.object({
@@ -26,7 +18,7 @@ const formSchema = z.object({
     .min(7, { message: 'New password must be at least 7 characters long' }),
 });
 
-export function UpdatePasswordPage({  ...props }) {
+const PasswordPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
@@ -67,7 +59,7 @@ export function UpdatePasswordPage({  ...props }) {
 
   return (
     <ToastProvider swipeDirection="right">
-      <div className={cn('grid gap-6 mx-4')} {...props}>
+      <div className="grid gap-6 mx-4">
         <h1 className="text-2xl font-semibold">Update Password</h1>
 
         <Form {...form}>
@@ -117,6 +109,7 @@ export function UpdatePasswordPage({  ...props }) {
       </div>
     </ToastProvider>
   );
-}
+};
 
-export default UpdatePasswordPage;
+// The default export is required for Next.js pages
+export default PasswordPage;

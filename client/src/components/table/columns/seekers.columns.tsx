@@ -128,12 +128,7 @@ export const seekerColumns = [
                             description: `booking ${!info.getValue() ? "Hidden" : "Shown"}!`,
                         });
                     }}
-                    viewFunction={async () => {
-                        router.push(`${ROUTE.SEEKERS}/${info?.row?.original?.id}`);
-                    }}
-                    editFunction={async () => {
-                        router.push(`${ROUTE.SEEKERS}/${info?.row?.original?.id}`);
-                    }}
+                 
                     deleteFunction={async () => {
                         toast({
                             description: "booking deleted!",

@@ -31,7 +31,7 @@ const formSchema = z.object({
   twitterURL: z.string().nullable(),
 });
 
-export function ProfileUpdatePage({ ...props }) {
+export function ProfilePage({ ...props }) {
   const dispatch = useDispatch<AppDispatch>();
   const profile = useSelector((state: RootState) => state.profile.profile);
   const [isLoading, setIsLoading] = useState(false);
@@ -280,4 +280,4 @@ export function ProfileUpdatePage({ ...props }) {
   );
 }
 
-export default ProfileUpdatePage;
+export default ProfilePage;

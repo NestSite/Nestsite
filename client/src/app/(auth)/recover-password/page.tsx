@@ -8,7 +8,7 @@ export default async function RecoverPasswordPage() {
             <h1 className="text-2xl md:text-6xl mb-3 font-bold">Recover your Password</h1>
             <p>
                 
-            Enter the email associated with your account and we'll email you a link to reset your password.  <br/>
+            Enter the email associated with your account and we&apos;ll email you a link to reset your password.  <br/>
                 
             </p>
        

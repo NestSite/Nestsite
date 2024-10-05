@@ -46,6 +46,12 @@ export async function middleware(req: NextRequest) {
   }
 }
 
+// Handle all unmatched routes
+export function onError(error: Error, req: NextRequest) {
+  console.error(error);
+  return NextResponse.redirect(new URL('/login', req.url));
+}
+
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 };

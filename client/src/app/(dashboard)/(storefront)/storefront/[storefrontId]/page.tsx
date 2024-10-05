@@ -16,7 +16,7 @@ import {
   ToastViewport,
 } from "@/components/ui/toast";
 
-const StorefrontEditPage = () => {
+const EditPage = () => {
   const router = useRouter();
   const params = useParams();
   const storefrontId = Array.isArray(params.storefrontId) ? params.storefrontId[0] : params.storefrontId; // Ensure storefrontId is a string
@@ -132,4 +132,4 @@ const StorefrontEditPage = () => {
   );
 };
 
-export default StorefrontEditPage;
+export default EditPage;
