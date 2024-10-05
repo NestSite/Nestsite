@@ -16,12 +16,12 @@ router.get('/', isAuthenticated, async (req: CustomRequest, res, next) => {
         next(error);
     }
 });
-
-// Create a Payment Link (Ensure name is unique)
 router.post('/', isAuthenticated, async (req: CustomRequest, res, next) => {
     try {
-        const { name, description } = req.body;
-                const merchantId=req.merchantId || ''
+        const { name, description, amount, currency, customUrl, expiryDate } = req.body;
+        const merchantId = req.merchantId || '';
+
+        // Check if the payment link with the same name already exists
         const existingPaymentLink = await prisma.paymentLink.findFirst({
             where: { merchantId: merchantId, name }
         });
@@ -30,11 +30,17 @@ router.post('/', isAuthenticated, async (req: CustomRequest, res, next) => {
             return res.status(400).json({ message: 'Payment link already exists' });
         }
 
+        // Create new payment link
         const paymentLink = await prisma.paymentLink.create({
             data: {
                 name,
                 description,
-                merchantId: merchantId
+                amount: parseFloat(amount), // ensure the amount is stored as float
+                currency,
+                customUrl,
+                expiryDate: expiryDate ? new Date(expiryDate) : null, // optional expiryDate
+                merchantId: merchantId,
+                status: 'active' // default status set to active
             }
         });
 
@@ -43,5 +49,4 @@ router.post('/', isAuthenticated, async (req: CustomRequest, res, next) => {
         next(error);
     }
 });
-
 export { router as PaymentLinkRouter };

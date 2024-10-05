@@ -106,14 +106,20 @@ model Product {
 }
 
 // PaymentLink entity
+// PaymentLink entity
 model PaymentLink {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  merchantId      String   @db.ObjectId
-  merchant        Merchant @relation(fields: [merchantId], references: [id])
-  name            String?  // Payment link URL
-  description     String?  // Description for the payment link
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  merchantId      String    @db.ObjectId
+  merchant        Merchant  @relation(fields: [merchantId], references: [id])
+  name            String?   // Name or purpose of the payment link (e.g., subscription, order)
+  description     String?   // Description for the payment link
+  amount          Float     // Amount to be paid using the payment link
+  currency        String    // Currency for the payment (e.g., USD, GHS, EUR)
+  customUrl       String?   // Custom URL for the payment link
+  status          String    @default("active")  // Status of the payment link (e.g., active, expired, cancelled)
+  expiryDate      DateTime? // Optional expiry date for the payment link
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 }
 
 // Device entity
